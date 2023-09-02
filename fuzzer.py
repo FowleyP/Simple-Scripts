@@ -2,11 +2,11 @@
 
 import socket, time, sys
 
-ip = "0.0.0.0" #change this
+ip = "0.0.0.0" # change this
 
-port = 65535 #change this
+port = 65535 # change this
 timeout = 2
-prefix = "ANY " #change this
+prefix = "ANY " # change this
 
 string = prefix + "A" * 100
 
