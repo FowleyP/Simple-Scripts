@@ -2,11 +2,11 @@
 
 import socket, time, sys
 
-ip = "192.168.15.5" #change this
+ip = "0.0.0.0" #change this
 
-port = 31337 #change this
+port = 65535 #change this
 timeout = 2
-prefix = "GATEKEEPER " #change this
+prefix = "ANY " #change this
 
 string = prefix + "A" * 100
 
