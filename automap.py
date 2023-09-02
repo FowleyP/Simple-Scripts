@@ -1,5 +1,5 @@
-#This script runs 2 nmap scans: first a syn scan to find open top-ports and then a version scan;
-#Then save it into a txt file;
+# This script runs 2 nmap scans: first a syn scan to find open top-ports and then a version scan;
+# Then save it into a txt file;
 
 import subprocess
 import sys
