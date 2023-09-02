@@ -13,7 +13,6 @@ packet_type="$3"
 
 echo -e "\e[1;37mScanning port \e[1;32m$target_port \e[1;37mon IP range \e[1;32m$ip_range \e[1;37musing hping3...\e[0;37m"
 
-# Perform the port scan for each IP in the range
 for ip in $(seq 1 254); do
     current_ip=$(echo "$ip_range" | sed "s/0\/24/$ip/")
     if [ "$packet_type" == "tcp" ]; then
