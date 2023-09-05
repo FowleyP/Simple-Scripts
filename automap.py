@@ -3,7 +3,19 @@
 
 import subprocess
 import sys
+import time
 from colorama import init, Fore, Style
+
+banner = """
+     ___      __    __  .___________.  ______   .___  ___.      ___      .______    .______   ____    ____    
+    /   \    |  |  |  | |           | /  __  \  |   \/   |     /   \     |   _  \   |   _  \  \   \  /   /    
+   /  ^  \   |  |  |  | `---|  |----`|  |  |  | |  \  /  |    /  ^  \    |  |_)  |  |  |_)  |  \   \/   /     
+  /  /_\  \  |  |  |  |     |  |     |  |  |  | |  |\/|  |   /  /_\  \   |   ___/   |   ___/    \_    _/      
+ /  _____  \ |  `--'  |     |  |     |  `--'  | |  |  |  |  /  _____  \  |  |     __|  |          |  |        
+/__/     \__\ \______/      |__|      \______/  |__|  |__| /__/     \__\ | _|    (__) _|          |__|        
+                                                                                                                                                                                                                
+"""
+print(f"{Style.BRIGHT}{Fore.YELLOW}{banner}")
 
 init(autoreset=True)
 
@@ -14,10 +26,11 @@ if len(sys.argv) != 3:
 target = sys.argv[1]
 top_ports = sys.argv[2]
 
+time.sleep(2)
 
 print(f"{Style.BRIGHT}{Fore.CYAN}Running Nmap...")
 
-command1 = f"nmap -sS -Pn --top-ports={top_ports} --open -T4 {target}"
+command1 = f"nmap -sS -Pn --top-ports={top_ports} --open -T4 {target} | grep -v 'filtered'"
 output1 = subprocess.check_output(command1, shell=True, universal_newlines=True)
 lines1 = output1.split('\n')[4:-2] # change this if your scan do not show correctly on screen
 
@@ -28,7 +41,7 @@ for line in lines1:
 
 print(f"{Style.BRIGHT}{Fore.CYAN}Scanning Versions...")
 
-command2 = f"nmap -sV -sC -Pn --top-ports={top_ports} --open {target}"
+command2 = f"nmap -sV -sC -Pn --top-ports={top_ports} --open {target} | grep -v 'filtered'"
 output2 = subprocess.check_output(command2, shell=True, universal_newlines=True)
 lines2 = output2.split('\n')[4:-3] # change this if your scan do not show correctly on screen
 
